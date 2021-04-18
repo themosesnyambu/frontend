@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WineItem } from '../Wine';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { WineService } from '../wine.service';
-
 
 @Component({
   selector: 'app-wines-list',
@@ -16,7 +16,7 @@ export class WinesListComponent implements OnInit {
   }
   loading$: Observable<boolean>;
   wines$: Observable<WineItem[]>;
-  searchValue: string='';
+  searchValue: string = '';
 
   wines: any;
   ngOnInit(): void {
@@ -24,7 +24,12 @@ export class WinesListComponent implements OnInit {
   }
 
   getWines() {
-    this.wines$ = this.winesService.getWineItems()
+    this.wines$ = this.winesService.getWineItems();
   }
 
+  filterFunc(tag: string) {
+    return this.wines$.pipe(
+      map((wines) => wines.filter((wine) => wine.tags.includes(tag)))
+    );
+  }
 }

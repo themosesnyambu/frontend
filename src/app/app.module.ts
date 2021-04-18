@@ -27,7 +27,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { FilterPipePipe } from './filter-pipe.pipe'
+import { FilterPipePipe } from './filter-pipe.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import { FilterPipePipe } from './filter-pipe.pipe'
     FilterPipePipe,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -60,6 +62,12 @@ import { FilterPipePipe } from './filter-pipe.pipe'
     MatPaginatorModule,
     MatInputModule,
     MatIconModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   exports: [MatDialogModule, MatFormFieldModule, MatInputModule, MatIconModule],
   providers: [],
