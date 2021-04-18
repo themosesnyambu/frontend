@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { StateService } from '../state.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-modal',
@@ -10,20 +11,24 @@ import { StateService } from '../state.service';
 export class ModalComponent implements OnInit {
   constructor(
     private stateService: StateService,
+    private userService: UserService,
     public dialogRef: MatDialogRef<ModalComponent>
   ) {}
 
-  data: any[] = [];
+  cartData: any[] = [];
   total: any;
+  userData: any;
 
   ngOnInit(): void {
-    this.getCartInfo();
+    this.getInfo();
+
   }
   cart: any[] = [];
 
-  getCartInfo() {
-    this.data = this.stateService.getCart();
+  getInfo() {
+    this.cartData = this.stateService.getCart();
     this.total = this.stateService.getTotal();
+    this.userData = this.userService.getUser();
   }
 
   closeModal() {

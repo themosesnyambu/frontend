@@ -1,14 +1,5 @@
 <div class="cart-wrapper" *ngIf="len > 0">
   <table mat-table [dataSource]="data" class="mat-elevation-z8">
-    <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Position Column -->
-    <!-- <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-      </ng-container> -->
-
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -53,16 +44,21 @@
   ></mat-paginator>
 
   <div class="totals">
-    <span>
-      <h2>Total</h2>
-      {{ total }}</span
-    >
-    <div class="buttons">
-      <button (click)="emptyCart()">Empty Cart</button>
-      <button [routerLink]="['/wines']" routerLinkActive="router-link-active">
+    <div>Total {{ total }}</div>
+    <div class="button-row">
+      <button class="button" (click)="emptyCart()">Empty Cart</button>
+      <button
+        class="button"
+        style="margin-left: 10px"
+        [routerLink]="['/wines']"
+        routerLinkActive="router-link-active"
+      >
         Continue Shopping
       </button>
       <button
+        class="button dark-button"
+        style="margin-left: 10px; margin-right: 20px"
+        mat-flat-button
         [routerLink]="['/checkout']"
         routerLinkActive="router-link-active"
       >

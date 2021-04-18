@@ -26,7 +26,8 @@ import { PersonalInformationComponent } from './personal-information/personal-in
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator'
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { FilterPipePipe } from './filter-pipe.pipe'
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {MatPaginatorModule} from '@angular/material/paginator'
     ModalComponent,
     PersonalInformationComponent,
     NavbarComponent,
+    FilterPipePipe,
   ],
   imports: [
     BrowserModule,

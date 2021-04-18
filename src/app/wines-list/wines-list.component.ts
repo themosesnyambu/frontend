@@ -16,6 +16,7 @@ export class WinesListComponent implements OnInit {
   }
   loading$: Observable<boolean>;
   wines$: Observable<WineItem[]>;
+  searchValue: string='';
 
   wines: any;
   ngOnInit(): void {
@@ -25,4 +26,5 @@ export class WinesListComponent implements OnInit {
   getWines() {
     this.wines$ = this.winesService.getWineItems()
   }
+
 }

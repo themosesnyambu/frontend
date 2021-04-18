@@ -1,8 +1,7 @@
 <div *ngIf="wines$ | async; else noWines" class="wine-list">
-  <app-wine-card
-    *ngFor="let wine of wines$ | async"
-    [wine]="wine"
-  ></app-wine-card>
+  <div *ngFor="let wine of wines$ | async">
+    <app-wine-card [wine]="wine"></app-wine-card>
+  </div>
 </div>
 <ng-template #noWines>
   <h2>no wines found</h2>

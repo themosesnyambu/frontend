@@ -1,6 +1,7 @@
 .wine-list{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 150px;
   margin: auto;
   width: 90%;
 }
@@ -8,5 +9,7 @@
 @media(max-width:600px){
   .wine-list{
     grid-template-columns: 1fr;
+    row-gap: 50px;
+
   }
 }

@@ -1,9 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@use './scss/color';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 mat-dialog-container#modal-component {
-  border: 3px solid #262626;
+  border: 3px solid #fff;
   border-radius: 11px;
-  background-color: #1a1a1a;
+  background-color: #fff;
+}
+
+.button{
+  border: none;
+  outline: none;
+  padding: 10px;
+  text-align: center;
+}
+
+.dark-button{
+  background-color: color.$black-color;
+  color: #fff;
+}
+
+.grey-button{
+  background-color: color.$light-color;
+  color: #000;
+}
+
+.grey-color{
+  color: color.$grey-color;
 }

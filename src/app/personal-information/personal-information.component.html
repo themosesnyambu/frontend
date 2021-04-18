@@ -24,7 +24,7 @@
         [errorStateMatcher]="matcher"
         placeholder="Ex. pat@gmail.com"
       />
-      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-hint>Enter your email</mat-hint>
       <mat-error
         *ngIf="
           emailFormControl.hasError('email') &&
@@ -52,7 +52,7 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <mat-label>Estate</mat-label>
+      <mat-label>Phone Number</mat-label>
       <input
         type="text"
         matInput
@@ -91,5 +91,5 @@
       <mat-hint>Your delivery notes</mat-hint>
     </mat-form-field>
   </form>
-  <button matInput (click)="checkOut()">checkout</button>
+  <button class="button button dark-button" matInput (click)="checkOut()">checkout</button>
 </div>

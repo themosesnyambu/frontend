@@ -1,6 +1,17 @@
 table {
-  width: 100%;
+  width: 80%;
+  margin: auto;
 }
 .totals{
   float: right;
+}
+
+@media(max-width: 600px){
+  table{
+    width: 95%;
+  }
+  .totals{
+    text-align: center;
+    float: none;
+  }
 }

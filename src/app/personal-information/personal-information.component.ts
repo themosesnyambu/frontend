@@ -12,6 +12,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 
 import { StateService } from '../state.service';
+import { UserService } from '../user.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -36,6 +37,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class PersonalInformationComponent implements OnInit {
   constructor(
     private stateService: StateService,
+    private userService: UserService,
     public matDialog: MatDialog
   ) {}
 
@@ -65,6 +67,16 @@ export class PersonalInformationComponent implements OnInit {
   }
 
   checkOut() {
+    let data = {
+      fullName: this.fullNameFormControl.value,
+      address: this.addressFormControl.value,
+      phoneNumber: this.phoneNumberFormControl.value,
+      deliveryNotes: this.deliveryNotesFormControl.value,
+      estate: this.estateFormControl.value,
+      email: this.emailFormControl.value,
+    };
+    this.userService.setUser(data);
+
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.id = 'modal-component';
