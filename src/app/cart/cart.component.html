@@ -1,0 +1,73 @@
+<div class="cart-wrapper" *ngIf="len > 0">
+  <table mat-table [dataSource]="data" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <!-- <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container> -->
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.wine.name }}</td>
+    </ng-container>
+
+    <!-- Quantity Column -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Quantity</th>
+      <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>Category</th>
+      <td mat-cell *matCellDef="let element">{{ element.qty }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="unitPrice">
+      <th mat-header-cell *matHeaderCellDef>Unit Price</th>
+      <td mat-cell *matCellDef="let element">{{ element.unitPrice }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="subTotal">
+      <th mat-header-cell *matHeaderCellDef>Sub Total</th>
+      <td mat-cell *matCellDef="let element">{{ element.subTotal }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element" class="action-link">
+        <a (click)="deleteRowData(element)"><mat-icon>delete</mat-icon></a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+
+  <div class="totals">
+    <span>
+      <h2>Total</h2>
+      {{ total }}</span
+    >
+    <div class="buttons">
+      <button (click)="emptyCart()">Empty Cart</button>
+      <button [routerLink]="['/wines']" routerLinkActive="router-link-active">
+        Continue Shopping
+      </button>
+      <button
+        [routerLink]="['/checkout']"
+        routerLinkActive="router-link-active"
+      >
+        proceed to check out
+      </button>
+    </div>
+  </div>
+</div>

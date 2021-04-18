@@ -1,0 +1,23 @@
+<div class="wine-card">
+  <!-- <div style="height: 100%;"> -->
+  <img class="wine-image" src="{{ IMAGE_URI + wine.image }}" alt="image" />
+  <!-- </div> -->
+  <div class="wine-info">
+    <h2>{{ wine.no }}</h2>
+    {{ wine.name }}
+    <div class="pricing">
+      <div class="bottle">
+        <div class="separator">
+          <h2>Bottle <br />$ {{ wine.cost.bottle }}</h2>
+          <input type="radio" (change)="radioChangeHandler($event)" name="bottle" value="bottle" /> QTY
+        </div>
+      </div>
+      <div class="case">
+        <h2>Case <br />$ {{ wine.cost.case }}</h2>
+        <input type="radio" (change)="radioChangeHandler($event)" name="case" value="case" /> QTY
+      </div>
+    </div>
+    <button class="details-btn">Details</button>
+    <button (click)="addToCart()">Add to Cart</button>
+  </div>
+</div>
